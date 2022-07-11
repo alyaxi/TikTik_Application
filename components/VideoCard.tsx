@@ -64,12 +64,12 @@ const VideoCard = ({ post }: IProps) => {
           onMouseEnter={() => {setIsHover(true)}}
           onMouseLeave={() => {setIsHover(false)}}
         >
-          <Link href="/">
+          <Link href={`/detail/${post._id}`}>
             <video
               ref={videoRef}
               src={post.video.asset.url}
               loop
-              className="lg:w[600px] h-[300px] md:h-[400px] lg:h-[430px] w-[200px] rounded-2xl cursor-pointer bg-gray-100"
+              className="lg:w-[600px] h-[300px] md:h-[400px] lg:h-[430px] w-[200px] rounded-2xl cursor-pointer bg-gray-100"
             ></video>
           </Link>
           {isHover && (
