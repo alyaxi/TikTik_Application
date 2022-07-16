@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, {Dispatch, SetStateAction} from "react";
 import { GoVerified } from "react-icons/go";
 import useAuthStore from "../store/authStore";
+import { IUser } from "../types";
 import NoResult from "./NoResult";
 
 interface IProps {
@@ -27,13 +28,45 @@ const Comments = ({
   isPostingComment,
   addComment,
 }: IProps) => {
-  const { userProfile } = useAuthStore();
+  const { userProfile, allUsers } = useAuthStore();
 
   return (
     <div className="border-t-2 border-gray-200 pt-4 px-10 bg-[#F8F8F8] border-b-2 lg:pb-0 pb-[100px]">
       <div className="overflow-scroll lg:h-[475px]">
         {comments?.length ? (
-          <div>Videos</div>
+          comments.map((item, idx) => (
+            <>
+            {allUsers?.map((user:IUser) => (
+              user._id === (item.postedBy._id || item.postedBy._ref) && (
+                <div className="p-2 items-center" key={idx}>
+                  <Link href={`/profile/${user._id}`}>
+                  <div className="flex justify-start gap-3 cursor-pointer">
+                  <div className="w-8 h-8">
+                <Image
+                  src={user.image}
+                  alt="user image"
+                  width={34}
+                  height={34}
+                  className="rounded-full"
+                />
+              </div>
+              <div className="hidden xl:block">
+                
+                  <p className=" flex gap-1 items-center text-primary ">{user.userName}
+                  <GoVerified className="text-blue-600 text-medium ml-2" />
+                  </p>
+                 <p className="lowercase text-gray-400 text-xs">{user.userName.replaceAll(" ", "" )}</p>
+              </div>
+                    </div>    
+                  </Link>
+                  <div>
+                    {item.comment}
+                  </div>
+                </div>
+              )
+            ))}
+            </>
+          ))
         ) : (
           <NoResult text="no comments yet" />
         )}
