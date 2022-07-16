@@ -16,6 +16,12 @@ const VideoCard = ({ post }: IProps) => {
   const [isMuted, setIsMuted] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
+  
+  useEffect(() => {
+    if(videoRef.current) {
+        videoRef.current.muted = isMuted
+    }
+}, [isMuted ])
   const onVideoPress = () => {
     if(Playing) {
         videoRef.current?.pause();
@@ -31,7 +37,7 @@ const VideoCard = ({ post }: IProps) => {
     <div className="flex flex-col border-b-2 border-gray-200 pb-6">
       <div>
         <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
-          <div className="md:w-16 md:h16 w-10 h-10">
+          <div className="md:w-16 md:h-16 w-10 h-10">
             <Link href="/">
               <>
                 <Image
@@ -47,7 +53,7 @@ const VideoCard = ({ post }: IProps) => {
           </div>
           <Link href="/">
             <div className="flex items-center gap-2">
-              <p className="flex gap-2 itms-center md:text-md font-bold text-primary">
+              <p className="flex gap-2 items-center md:text-md font-bold text-primary">
                 {post.postedBy.userName}{" "}
                 <GoVerified className="text-blue-400 text-md " />
               </p>
