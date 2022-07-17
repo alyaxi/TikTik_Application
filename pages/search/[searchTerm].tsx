@@ -8,6 +8,7 @@ import { IUser, Video } from "../../types";
 import Link from "next/link";
 import useAuthStore from "../../store/authStore";
 import { useRouter } from "next/router";
+import { BASE_URL } from "../../utils/index1";
 const Search = ({videos}: {videos: Video[]}) => {
     
     const [isAccount, setIsAccount] = useState(false)
@@ -80,7 +81,7 @@ export const getServerSideProps = async ({
 }: {
   params: { searchTerm: string };
 }) => {
-  const response = await axios.get(`http://localhost:3000/api/search/${searchTerm}`);
+  const response = await axios.get(`${BASE_URL}/api/search/${searchTerm}`);
   console.log(response);
   return {
     props: { videos: response.data },

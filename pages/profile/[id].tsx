@@ -5,6 +5,7 @@ import axios from "axios";
 import VideoCard from "../../components/VideoCard";
 import NoResult from "../../components/NoResult";
 import { IUser, Video } from "../../types";
+import { BASE_URL } from "../../utils/index1";
 interface IProps {
   data: {
     user: IUser;
@@ -83,7 +84,7 @@ export const getServerSideProps = async ({
 }: {
   params: { id: string };
 }) => {
-  const response = await axios.get(`http://localhost:3000/api/profile/${id}`);
+  const response = await axios.get(`${BASE_URL}/api/profile/${id}`);
   console.log(response);
   return {
     props: { data: response.data },

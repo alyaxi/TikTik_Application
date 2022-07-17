@@ -1,6 +1,6 @@
 import axios from 'axios';
+import { BASE_URL } from './index1';
 
-export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const createOrGetUser = async (response: any, addUser: any) => {
   var base64Url = response.credential.split('.')[1];
@@ -20,5 +20,5 @@ export const createOrGetUser = async (response: any, addUser: any) => {
   
   addUser(user);
 
-  await axios.post(`http://localhost:3000/api/auth`, user);
+  await axios.post(`${BASE_URL}/api/auth`, user);
 };

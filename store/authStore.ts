@@ -1,7 +1,7 @@
 import create from "zustand"
 import {persist} from "zustand/middleware"
 import axios  from "axios"
-import { BASE_URL } from "../utils";
+import { BASE_URL } from "../utils/index1";
 
 const authStore = (set: any) => ({
     userProfile: null,
@@ -10,7 +10,7 @@ const authStore = (set: any) => ({
     addUser: (user:any) => set({userProfile: user}),
     removeUser: () => set({userProfile:null}),
     fetchAllUser: async () => {
-        const response = await axios.get(`http://localhost:3000/api/users`)
+        const response = await axios.get(`${BASE_URL}/api/users`)
 
         set({allUsers: response.data})
     } 

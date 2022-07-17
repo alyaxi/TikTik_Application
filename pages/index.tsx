@@ -7,6 +7,7 @@ import VideoCard from "../components/VideoCard";
 import NoResult from "../components/NoResult";
 import { BASE_URL } from "../utils/index1";
 
+
 interface IProp {
   videos: Video[]
 }
@@ -31,10 +32,10 @@ export const getServerSideProps = async ({query: {topic}}: {query: {topic: strin
   let response = null;
   if(topic){
 
-    response = await axios.get(`http://localhost:3000/api/discover/${topic}`);
+    response = await axios.get(`${BASE_URL}/api/discover/${topic}`);
   }else{
 
-    response = await axios.get(`http://localhost:3000/api/post`);
+    response = await axios.get(`${BASE_URL}/api/post`);
   }
 
   // console.log(data[0].video);
