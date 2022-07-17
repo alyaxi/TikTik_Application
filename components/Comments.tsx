@@ -48,6 +48,7 @@ const Comments = ({
                   width={34}
                   height={34}
                   className="rounded-full"
+                  layout="responsive"
                 />
               </div>
               <div className="hidden xl:block">
