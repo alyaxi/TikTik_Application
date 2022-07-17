@@ -17,7 +17,7 @@ const Footer1 = () => {
     <List items={footerList1} mt={false}/>
     <List items={footerList2} mt/>
     <List items={footerList3} mt/>
-    <p className="text-sm mt-5 text-gray-400 hidden xl:block">2022 Tiktik</p>
+    <p className="text-sm mt-5 text-gray-400 hidden xl:block">SAYED ALI Z. 2022 Tiktik</p>
   </div>;
 };
 
